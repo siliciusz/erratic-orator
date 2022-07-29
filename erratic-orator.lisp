@@ -84,7 +84,8 @@
 (defun reset-database-connection ()
   (let ((database-path (slot-value *database* 'sqlite::database-path)))
     (close-database)
-    (open-database database-path)))
+    (open-database database-path)
+    (ensure-database-structure)))
 
 
 (defun add-states-to-database (states)
