@@ -60,7 +60,7 @@
     (setf *database* nil)))
 
 
-(defun open-database (path)
+(defun open-database (&optional (path *default-database-path*))
   (if *database*
       (error (format nil "Some database is already opened." ))
       (setf *database* (sqlite:connect path))))
@@ -75,9 +75,9 @@
       (sqlite:execute-non-query *database* query))))
 
 
-(defun ensure-database-connection (&optional (path *default-database-path*))
+(defun ensure-database-connection ()
   (unless *database*
-    (open-database path)
+    (open-database)
     (ensure-database-structure)))
 
 
