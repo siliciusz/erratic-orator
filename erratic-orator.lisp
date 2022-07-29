@@ -116,7 +116,7 @@ INSERT INTO rank_1_transitions (state_0, next_state)
 (defun commit-to-database (state-sequence)
   (sqlite:with-transaction *database*
     ;; first ensure all used states are in the database
-    (add-states-to-database (extract-unique state-sequence))
+    (add-states-to-database state-sequence)
     
     ;; then insert all transitions present in the input state sequence
     (add-transitions-to-database (make-transitions state-sequence))))

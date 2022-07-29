@@ -29,10 +29,3 @@
        (setf files (append files (uiop:directory-files sub-directory)))))
     files))
 
-
-(defun extract-unique (list &key (test #'equal))
-  "Returns all unique lements of the given list in an undefined order."
-  (loop :for item :in list
-	:with set
-	:do (setf set (adjoin item set :test test))
-	:finally (return set)))
