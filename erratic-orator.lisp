@@ -37,10 +37,8 @@
 
 
 (defun  tokenize-stream (stream &optional (source nil))
-  (loop :with tokens = nil
-	:for line = (read-line stream nil) :while line
-	:do (setf tokens (append tokens (tokenize-string line source)))
-	:finally (return tokens)))
+  (loop :for line = (read-line stream nil) :while line
+	:appending (tokenize-string line source)))
 
 
 (defun tokenize-file (file-path &optional (encoding :default))
