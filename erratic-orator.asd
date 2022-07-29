@@ -25,4 +25,5 @@
   :depends-on (:sqlite :lexer)
   :components ((:file "package")
 	       (:file "util")
+	       (:file "database")
                (:file "erratic-orator")))
